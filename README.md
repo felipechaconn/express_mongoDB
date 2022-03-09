@@ -14,5 +14,6 @@
     - Create file to work with babel .babelrc 
 5. We need to run `npx babel-node src/index.js` because we use import on index.js
 6. Create a startup script in package.json 'start:dev': "nodemon src/index.js --exec babel-node"
-
+7. We need to install dotenv module to works with .env
+    - `npm i dotenv`
 
