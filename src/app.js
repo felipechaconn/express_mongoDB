@@ -5,12 +5,14 @@
  * Import express handle-bars to work with html
  * Import Routes file
  * Import Module path to work with locations in computer
+ * Import Morgan is a middlaware 
  *
  */
 import express from "express";
 import { create } from "express-handlebars";
 import indexRoutes from "./routes/index.routes";
 import path from "path";
+import morgan from "morgan";
 
 const app = express();
 
@@ -33,6 +35,13 @@ const exphbs = create({
 app.engine(".hbs", exphbs.engine);
 //set to express template motor
 app.set("view engine", ".hbs");
+
+/**middlewares 
+before use routes 
+*/
+app.use(morgan('dev'));  //Morgan write in console http status
+app.use(express.urlencoded({extended:false})); //urlencode Allow to recived JSON body
+
 
 //Need to use index routes
 app.use(indexRoutes);
