@@ -1,6 +1,6 @@
 //This import is a function to avoid call app again.
 import { Router } from "express";
-import Task from '../models/Task'
+import Task from "../models/Task";
 //Execute Router
 const router = Router();
 
@@ -23,15 +23,13 @@ router.get("/edit", (req, res) => {
 });
 
 //Route post
-router.post('/tasks/add',(req,res)=>{
-  
-  const task = Task(req.body) //Create model with data in req 
+router.post("/tasks/add", async (req, res) => {
+  const task = Task(req.body); //Create model with data in req
 
-  console.log(task);
-  res.send('add task')
+  taskSaved = await task.save();
 
-})
+  res.redirect('/');
+ });
 
- 
 //Export this routes
 export default router;

@@ -23,6 +23,6 @@ const taskSchema = new Schema(
   }
 );
 
-//Create data model
+//Create data model and set the name of the collection in that case will be 'task'
 
 export default model("Task", taskSchema);
