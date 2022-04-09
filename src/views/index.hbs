@@ -12,5 +12,18 @@
       rows="10"
     ></textarea>
   </div>
-  <button>Adds </button>
+  <button>Adds</button>
 </form>
+
+
+<ul>
+    {{#each tasks}}
+    <li>{{title}}
+    <p>{{description}}</p>
+    <div>
+        <button>Edit</button> 
+        <button>Delete</button>
+    </div>
+    </li>
+   {{/each}} 
+</ul>

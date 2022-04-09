@@ -5,9 +5,14 @@ import Task from "../models/Task";
 const router = Router();
 
 //Route
-router.get("/", (req, res) => {
-  //Render works with views
-  res.render("index");
+router.get("/", async (req, res) => {
+
+ const tasks = await Task.find().lean(); //get data NEEDS await..
+  
+ //Render works with views and pass tasks from db
+  res.render("index", {tasks:tasks});
+
+
 });
 
 //Route about us
@@ -26,7 +31,7 @@ router.get("/edit", (req, res) => {
 router.post("/tasks/add", async (req, res) => {
   const task = Task(req.body); //Create model with data in req
 
-  taskSaved = await task.save();
+  await task.save();
 
   res.redirect('/');
  });
