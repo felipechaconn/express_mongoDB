@@ -1,5 +1,6 @@
 //This import is a function to avoid call app again.
 import { Router } from "express";
+import mongoose from "mongoose";
 import Task from "../models/Task";
 //Execute Router
 const router = Router();
@@ -26,10 +27,25 @@ router.get("/about", (req, res) => {
 });
 
 //Route about us
-router.get("/edit", (req, res) => {
-  //Render works without extension because app.js knows we work with .hbs
-  res.render("edit");
+router.get("/edit/:id", async (req, res) => {
+try {
+  const id = req.params.id;
+       
+  const task = await Task.findById(id).lean();
+
+//Render works without extension because app.js knows we work with .hbs and pass task
+res.render("edit", {task});
+} catch (error) {
+  console.log(error);
+}
 });
+
+router.post('/edit/:id',  async (req, res)=>{
+  const {id} = req.params;
+  await Task.findByIdAndUpdate(id,req.body);
+  res.redirect('/');
+})
+
 
 //Route post
 router.post("/tasks/add", async (req, res) => {
