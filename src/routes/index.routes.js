@@ -7,10 +7,14 @@ const router = Router();
 //Route
 router.get("/", async (req, res) => {
 
- const tasks = await Task.find().lean(); //get data NEEDS await..
+try {
+  const tasks = await Task.find().lean(); //get data NEEDS await..
   
- //Render works with views and pass tasks from db
-  res.render("index", {tasks:tasks});
+  //Render works with views and pass tasks from db
+   res.render("index", {tasks:tasks});
+} catch (error) {
+  console.log(error);
+}
 
 
 });

@@ -17,3 +17,8 @@
 7. We need to install dotenv module to works with .env
     - `npm i dotenv`
 
+
+## NOTES
+
+
+Partials are handelbars templates that you could call and reuse them
