@@ -22,3 +22,6 @@
 
 
 Partials are handelbars templates that you could call and reuse them
+
+
+methodOverride node js =  changes the method get to put or delete from frontend.
