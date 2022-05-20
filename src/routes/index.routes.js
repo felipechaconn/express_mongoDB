@@ -53,6 +53,15 @@ router.get('/delete/:id', async (req,res)=>{
 })
 
 
+router.get('/toggleDone/:id',async(req,res)=>{
+  const {id} = req.params;
+  const task = await Task.findById(id);
+  console.log(task);
+  let status = task.done?!task.done:true;
+  task.done = status;
+  await task.save();
+  res.redirect('/');
+})
 //Route post
 router.post("/tasks/add", async (req, res) => {
   const task = Task(req.body); //Create model with data in req

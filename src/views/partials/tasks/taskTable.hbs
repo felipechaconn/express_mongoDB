@@ -13,7 +13,14 @@
           <td>{{@index}}</td>
         <td>{{title}}</td>
         <td>{{description}}</td>
-        <td><button>Done</button>
+        <td>
+          {{!IF statement checks boolean value to print undone or done}}
+          {{#if done}}
+            <a href="/toggleDone/{{_id}}">Undone</a>
+          {{else}}
+            <a href="/toggleDone/{{_id}}">Done</a>
+          {{/if}}
+
           <a href="/delete/{{_id}}">
              Delete
           </a>
