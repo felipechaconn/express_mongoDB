@@ -16,16 +16,16 @@
         <td>
           {{!IF statement checks boolean value to print undone or done}}
           {{#if done}}
-            <a href="/toggleDone/{{_id}}">Undone</a>
+            <a href="/tasks/{{_id}}/toggleDone">Undone</a>
           {{else}}
-            <a href="/toggleDone/{{_id}}">Done</a>
+            <a href="/tasks/{{_id}}/toggleDone">Done</a>
           {{/if}}
 
-          <a href="/delete/{{_id}}">
+          <a href="/tasks/{{_id}}/delete">
              Delete
           </a>
           </button>
-          <a href="/edit/{{_id}}">
+          <a href="/tasks/{{_id}}/edit">
               Update
           </a>
         </td>
